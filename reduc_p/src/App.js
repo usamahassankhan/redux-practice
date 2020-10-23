@@ -1,12 +1,15 @@
 import React from 'react';
+import Counter from './Containers/Counter/Counter'
 
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-     <h1>  i am app component</h1>
-    </div>
+   
+     <div className="App">
+       <Counter />
+      </div>
+ 
   );
 }
 
