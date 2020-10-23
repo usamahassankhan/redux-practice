@@ -9,6 +9,24 @@ return{
 
 }
    }  
+   if(action.type==='DECREMENT'){
+    return{ 
+        counter:state.counter-1
+    
+    }
+       }  
+       if(action.type==='ADD5'){
+        return{ 
+            counter:state.counter+5
+        
+        }
+           }  
+           if(action.type==='SUB5'){
+            return{ 
+                counter:state.counter-5
+            
+            }
+               }  
    return state;
   
 };
