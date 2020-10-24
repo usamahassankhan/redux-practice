@@ -33,21 +33,32 @@ class Counter extends Component {
                 <CounterControl label="Decrement" clicked={ this.props.onDecrementCounter}  />
                 <CounterControl label="Add 5" clicked={this.props.onAdd5}  />
                 <CounterControl label="Subtract 5" clicked={this.props.onSUB5}  />
+           <hr/>
+           <button onClick={this.props.onStoreResult}>Store Result</button>
+           <ul>
+               {this.props.storedResults.map(strResult=>(<li key={strResult.id} onClick={()=>    this.props.onDeleteResult(strResult.id)}>{strResult.value}</li>))}
+               
+
+               
+           </ul>
             </div>
         );
     }
 }
 const  mapStateToProps=state=>{
     return{
-ctr:state.counter
+ctr:state.counter,
+storedResults:state.results
     };
 }
 const mapDispatchToProps=dispatch=>{
     return{
         onIncrementCounter:()=>dispatch({type:'INCREMENT'}),
         onDecrementCounter:()=>dispatch({type:'DECREMENT'}),
-        onAdd5:()=>dispatch({type:'ADD5'}),
-        onSUB5:()=>dispatch({type:'SUB5'})
+        onAdd5:()=>dispatch({type:'ADD5',val:5}),
+        onSUB5:()=>dispatch({type:'SUB5',val:5}),
+        onStoreResult:()=>dispatch({type:'STORE_RESULT'}),
+        onDeleteResult:(id)=>dispatch({type:'DELETE_RESULT',resultElId:id  })
     };
 };
 export default connect(mapStateToProps,mapDispatchToProps)(Counter);
